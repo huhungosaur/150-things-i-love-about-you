@@ -196,11 +196,11 @@
       </p>
 
 <div class="overlay-actions">
-  <button class="start-btn" id="playBtn">▶ Play the soundtrack</button>
-  <button class="start-btn secondary" id="startBtn">💘 Start the love story</button>
+  <button class="start-btn" id="playBtn">▶ 💘 Start the love story</button>
 </div>
 
-<div class="tiny-note">Tip: hit play first, then start 💘</div>
+<div class="tiny-note">Press play to begin 💘</div>
+
 
 <div id="overlayPlaylistEmbed">
   <iframe
@@ -432,29 +432,25 @@
 
 <script>
   const overlay = document.getElementById("overlay");
-  const startBtn = document.getElementById("startBtn");
   const siteContent = document.getElementById("siteContent");
 
   const playBtn = document.getElementById("playBtn");
   const overlayPlaylistEmbed = document.getElementById("overlayPlaylistEmbed");
 
-  // Reveal Spotify inside the overlay
   playBtn.addEventListener("click", () => {
+    // Hide play button
     playBtn.style.display = "none";
+
+    // Show Spotify
     overlayPlaylistEmbed.classList.add("show");
 
+    // After a short moment, reveal the site
     setTimeout(() => {
-      overlayPlaylistEmbed.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 80);
-  });
-
-  // Start the page
-  startBtn.addEventListener("click", () => {
-    siteContent.classList.add("visible");
-    overlay.classList.add("hidden");
+      siteContent.classList.add("visible");
+      overlay.classList.add("hidden");
+    }, 900); // gives her a moment to see Spotify before transition
   });
 </script>
-
 
 </body>
 </html>
