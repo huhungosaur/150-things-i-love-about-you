@@ -199,8 +199,9 @@
   <button class="start-btn" id="playBtn">▶ 💘 Start the love story</button>
 </div>
 
-<div class="tiny-note">Press play to begin 💘</div>
-
+<div class="tiny-note" id="overlayHint">
+  Start the music, then tap anywhere to begin 💘
+</div>
 
 <div id="overlayPlaylistEmbed">
   <iframe
@@ -214,6 +215,7 @@
     loading="lazy">
   </iframe>
 </div>
+
 
     </div>
   </div>
@@ -440,18 +442,16 @@
 
   let musicRevealed = false;
 
-  // Step 1: Show Spotify, but DO NOT leave overlay yet
   playBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent accidental close
+    e.stopPropagation(); // don't close overlay
 
     playBtn.style.display = "none";
     overlayPlaylistEmbed.classList.add("show");
-    overlayHint.style.opacity = "1";
 
+    overlayHint.textContent = "Now press play, then tap anywhere to begin 💘";
     musicRevealed = true;
   });
 
-  // Step 2: Any click AFTER music reveal starts the site
   overlay.addEventListener("click", () => {
     if (!musicRevealed) return;
 
