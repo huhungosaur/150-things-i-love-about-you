@@ -6,14 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #fff6f8;
-      color: #333;
-      line-height: 1.6;
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #fff6f8;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Spotify reveal animation */
+  #playlistEmbed {
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
 
     .container {
       max-width: 900px;
@@ -227,23 +245,31 @@
       <!-- Poster Image -->
       <img class="poster" src="poster.png" alt="150 Things I Love About You poster" />
 
-      <!-- Spotify Playlist -->
-      <section id="playlist">
-        <h2>🎶 Taylor’s Version</h2>
-        <p class="section-note">Press play while you read this 💘</p>
-        <div class="embed-wrap">
-          <iframe
-            style="border-radius:12px"
-            src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
-            width="100%"
-            height="352"
-            frameborder="0"
-            allowfullscreen
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy">
-          </iframe>
-        </div>
-      </section>
+<!-- Spotify Playlist (Hidden until clicked) -->
+<section id="playlist-section" style="text-align:center;">
+  <h2>🎶 Taylor’s Version</h2>
+  <p class="section-note">
+    This is the soundtrack to this page.
+  </p>
+
+  <button class="start-btn" id="showPlaylistBtn">
+    ▶️ Play the soundtrack
+  </button>
+
+  <div id="playlistEmbed" style="display:none; margin-top:18px;">
+    <iframe
+      style="border-radius:12px"
+      src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
+      width="100%"
+      height="352"
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
 
       <!-- 1–20 -->
       <section>
@@ -444,21 +470,31 @@
     </div>
   </div>
 
-  <script>
-    const overlay = document.getElementById("overlay");
-    const startBtn = document.getElementById("startBtn");
-    const siteContent = document.getElementById("siteContent");
-    const playlist = document.getElementById("playlist");
+<script>
+  const overlay = document.getElementById("overlay");
+  const startBtn = document.getElementById("startBtn");
+  const siteContent = document.getElementById("siteContent");
 
-    startBtn.addEventListener("click", () => {
-      siteContent.classList.add("visible");
-      overlay.classList.add("hidden");
+  const showPlaylistBtn = document.getElementById("showPlaylistBtn");
+  const playlistEmbed = document.getElementById("playlistEmbed");
 
-      setTimeout(() => {
-        playlist.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 150);
-    });
-  </script>
+  // Intro overlay start
+  startBtn.addEventListener("click", () => {
+    siteContent.classList.add("visible");
+    overlay.classList.add("hidden");
+  });
+
+  // Reveal Spotify playlist
+  showPlaylistBtn.addEventListener("click", () => {
+    showPlaylistBtn.style.display = "none";
+    playlistEmbed.style.display = "block";
+
+    setTimeout(() => {
+      playlistEmbed.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  });
+</script>
+
 
 </body>
 </html>
