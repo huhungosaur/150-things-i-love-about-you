@@ -195,11 +195,26 @@
         So I finally came prepared.
       </p>
 
-      <button class="start-btn" id="startBtn">
-        ▶ Start the love story
-      </button>
+<div class="overlay-actions">
+  <button class="start-btn" id="playBtn">▶ Play the soundtrack</button>
+  <button class="start-btn secondary" id="startBtn">💘 Start the love story</button>
+</div>
 
-      <div class="tiny-note">Tip: press play when you see the playlist 🎶</div>
+<div class="tiny-note">Tip: hit play first, then start 💘</div>
+
+<div id="overlayPlaylistEmbed">
+  <iframe
+    style="border-radius:12px"
+    src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
+    width="100%"
+    height="352"
+    frameborder="0"
+    allowfullscreen
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
+</div>
+
     </div>
   </div>
 
@@ -215,32 +230,6 @@
 
       <!-- Poster Image -->
       <img class="poster" src="poster.png" alt="150 Things I Love About You poster" />
-
-<!-- Spotify Playlist (Hidden until clicked) -->
-<section id="playlist-section" style="text-align:center;">
-  <h2>🎶 Taylor’s Version</h2>
-  <p class="section-note">
-    This is the soundtrack to this page.
-  </p>
-
-  <button class="start-btn" id="showPlaylistBtn">
-    ▶️ Play the soundtrack
-  </button>
-
-  <div id="playlistEmbed" style="display:none; margin-top:18px;">
-    <iframe
-      style="border-radius:12px"
-      src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
-      width="100%"
-      height="352"
-      frameborder="0"
-      allowfullscreen
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  </div>
-</section>
-
 
       <!-- 1–20 -->
       <section>
@@ -446,23 +435,23 @@
   const startBtn = document.getElementById("startBtn");
   const siteContent = document.getElementById("siteContent");
 
-  const showPlaylistBtn = document.getElementById("showPlaylistBtn");
-  const playlistEmbed = document.getElementById("playlistEmbed");
+  const playBtn = document.getElementById("playBtn");
+  const overlayPlaylistEmbed = document.getElementById("overlayPlaylistEmbed");
 
-  // Intro overlay start
+  // Reveal Spotify inside the overlay
+  playBtn.addEventListener("click", () => {
+    playBtn.style.display = "none";
+    overlayPlaylistEmbed.classList.add("show");
+
+    setTimeout(() => {
+      overlayPlaylistEmbed.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
+  });
+
+  // Start the page
   startBtn.addEventListener("click", () => {
     siteContent.classList.add("visible");
     overlay.classList.add("hidden");
-  });
-
-  // Reveal Spotify playlist
-  showPlaylistBtn.addEventListener("click", () => {
-    showPlaylistBtn.style.display = "none";
-    playlistEmbed.style.display = "block";
-
-    setTimeout(() => {
-      playlistEmbed.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100);
   });
 </script>
 
