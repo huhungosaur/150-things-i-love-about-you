@@ -87,235 +87,346 @@
       opacity: 0.75;
       margin: 34px 0 18px;
     }
+
+    /* --- Intro Overlay --- */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 246, 248, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 9999;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-6px);
+    }
+
+    .overlay-card {
+      width: 100%;
+      max-width: 640px;
+      background: white;
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+      text-align: center;
+    }
+
+    .overlay-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.9rem;
+    }
+
+    .overlay-card p {
+      margin: 0 0 18px;
+      opacity: 0.9;
+    }
+
+    .start-btn {
+      display: inline-block;
+      border: none;
+      background: #ff4d6d;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.35);
+      transition: transform 0.08s ease, opacity 0.2s ease;
+    }
+
+    .start-btn:active {
+      transform: scale(0.98);
+    }
+
+    .tiny-note {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    /* Hide main content until started */
+    .site-content {
+      display: none;
+    }
+
+    .site-content.visible {
+      display: block;
+    }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <h1>150 Things I Love About You ❤️</h1>
-    <div class="subtitle">A love story, Hunter’s Version</div>
-    <div class="intro">
-      For the girl who asks me to name 10 things I love about her all the time… I figured I’d finally come prepared.
+  <!-- Intro Overlay -->
+  <div class="overlay" id="overlay">
+    <div class="overlay-card">
+      <h2>💘 Hey you…</h2>
+      <p>
+        You always ask me to name 10 things I love about you.<br />
+        So I finally came prepared.
+      </p>
+
+      <button class="start-btn" id="startBtn">▶ Start the love story</button>
+      <div class="tiny-note">Tip: press play when you see the playlist 🎶</div>
     </div>
-
-    <!-- Poster Image -->
-    <img class="poster" src="poster.png" alt="150 Things I Love About You poster" />
-
-    <!-- Spotify Playlist -->
-    <section>
-      <h2>🎶 Taylor’s Version</h2>
-      <p class="section-note">Press play while you read this 💘</p>
-      <div class="embed-wrap">
-        <iframe
-          style="border-radius:12px"
-          src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
-          width="100%"
-          height="352"
-          frameborder="0"
-          allowfullscreen
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
-      </div>
-    </section>
-
-    <!-- 1–20 -->
-    <section>
-      <h2>💖 You, Just Being You</h2>
-      <ol>
-        <li>The way you smile when you’re genuinely happy</li>
-        <li>How you laugh at my jokes (even the bad ones)</li>
-        <li>The way your presence instantly makes everything better</li>
-        <li>How safe and calm I feel with you</li>
-        <li>Your kind heart</li>
-        <li>Your warmth</li>
-        <li>Your honesty</li>
-        <li>The way you’re unapologetically yourself</li>
-        <li>Your sincerity</li>
-        <li>Your authenticity</li>
-        <li>The way you care so deeply</li>
-        <li>Your empathy</li>
-        <li>The way you understand people</li>
-        <li>Your emotional intelligence</li>
-        <li>The way you’re gentle but strong</li>
-        <li>How genuine you are</li>
-        <li>The way you make others feel comfortable</li>
-        <li>Your patience</li>
-        <li>Your loyalty</li>
-        <li>The way you love wholeheartedly</li>
-      </ol>
-    </section>
-
-    <!-- 21–35 -->
-    <section>
-      <h2>🎶 Taylor’s Version (More Reasons)</h2>
-      <ol start="21">
-        <li>Your love for Taylor Swift</li>
-        <li>The way you light up when her songs come on</li>
-        <li>How you somehow know every lyric</li>
-        <li>The way you sing like you’re on tour</li>
-        <li>How Taylor songs make me think of you</li>
-        <li>Your music taste rubbing off on me</li>
-        <li>The emotional range you bring to playlists</li>
-        <li>The way music connects to your soul</li>
-        <li>Your excitement when a favourite song starts</li>
-        <li>How passionate you are about the things you love</li>
-        <li>The way you feel music, not just hear it</li>
-        <li>How certain songs instantly match your mood</li>
-        <li>The way you make car rides better with music</li>
-        <li>How music helps you express yourself</li>
-        <li>The way Taylor Swift is basically a love language for you</li>
-      </ol>
-    </section>
-
-    <!-- 36–55 -->
-    <section>
-      <h2>🍝 The Way You Look After Me</h2>
-      <ol start="36">
-        <li>The amazing food you make</li>
-        <li>The love you put into cooking</li>
-        <li>How everything you make tastes better than expected</li>
-        <li>The way your food feels comforting</li>
-        <li>How you remember what I like</li>
-        <li>The effort you put into meals</li>
-        <li>The way you turn dinner into quality time</li>
-        <li>How you feed me like you care about my soul</li>
-        <li>The pride you take in your cooking</li>
-        <li>The way food feels like love when it comes from you</li>
-        <li>How you always want to make sure I’ve eaten</li>
-        <li>The way you cook even when you’re tired</li>
-        <li>How you make simple meals special</li>
-        <li>The way you enjoy cooking for people you love</li>
-        <li>How your food feels like home</li>
-        <li>The comfort your cooking brings</li>
-        <li>The care behind everything you make</li>
-        <li>The way you spoil me with food</li>
-        <li>How thoughtful you are with meals</li>
-        <li>The way cooking is another way you show love</li>
-      </ol>
-    </section>
-
-    <!-- 56–75 -->
-    <section>
-      <h2>🧹 Our Home & Everyday Love</h2>
-      <ol start="56">
-        <li>The way you ask me to name 10 things I love about you</li>
-        <li>How you never get tired of hearing it</li>
-        <li>The way you make loving you intentional</li>
-        <li>All the chores you do around the house</li>
-        <li>The way you notice what needs doing</li>
-        <li>The effort you put into our shared space</li>
-        <li>The way you make a house feel like home</li>
-        <li>How you support me through actions, not just words</li>
-        <li>The way you do things because you care</li>
-        <li>How you make life easier without asking for credit</li>
-        <li>The way you take responsibility</li>
-        <li>How reliable you are</li>
-        <li>The way you show up every day</li>
-        <li>The consistency you bring to our lives</li>
-        <li>The way you keep things running smoothly</li>
-        <li>How you think about “us” in daily decisions</li>
-        <li>The effort you put into the little things</li>
-        <li>The way you carry so much without complaining</li>
-        <li>How thoughtful you are with everyday tasks</li>
-        <li>The love you show through effort</li>
-      </ol>
-    </section>
-
-    <!-- 76–105 -->
-    <section>
-      <h2>💘 Us</h2>
-      <ol start="76">
-        <li>The way you hug me</li>
-        <li>How your hugs feel like home</li>
-        <li>The way you believe in me</li>
-        <li>How you support my goals</li>
-        <li>The way you celebrate my wins</li>
-        <li>How you comfort me when things aren’t great</li>
-        <li>The way you understand me</li>
-        <li>How you accept me as I am</li>
-        <li>The way you listen to me</li>
-        <li>How you really hear me</li>
-        <li>The way you reassure me</li>
-        <li>How safe I feel being vulnerable with you</li>
-        <li>The way you make distance feel smaller</li>
-        <li>How you make time apart bearable</li>
-        <li>The way you make reunions special</li>
-        <li>How excited I get to see you</li>
-        <li>The way you make waiting worth it</li>
-        <li>How you choose me every day</li>
-        <li>Your commitment to us</li>
-        <li>The way you prioritise our relationship</li>
-        <li>How secure you make me feel</li>
-        <li>The way you calm my overthinking</li>
-        <li>How you ground me</li>
-        <li>The way you make me feel valued</li>
-        <li>How you make me feel wanted</li>
-        <li>The way you make me feel loved</li>
-        <li>How natural loving you feels</li>
-        <li>The way you make “us” feel solid</li>
-        <li>How you make love feel safe</li>
-        <li>The way you make the future exciting</li>
-      </ol>
-    </section>
-
-    <!-- 106–150 -->
-    <section>
-      <h2>🏡 My Favourite Person</h2>
-      <ol start="106">
-        <li>The way you make ordinary days special</li>
-        <li>How you turn moments into memories</li>
-        <li>The comfort you bring</li>
-        <li>The peace you give me</li>
-        <li>The way you calm my overthinking</li>
-        <li>The way you make me feel secure</li>
-        <li>How you make me feel loved without trying</li>
-        <li>The way you make me feel chosen</li>
-        <li>The way you feel like my person</li>
-        <li>The way you feel like home</li>
-        <li>How you make me smile without realising</li>
-        <li>The way you make my heart feel full</li>
-        <li>How you make me proud</li>
-        <li>The way you inspire me</li>
-        <li>How you make me grateful</li>
-        <li>The way you make everything brighter</li>
-        <li>How you’ve changed my life</li>
-        <li>The way you’ve changed me for the better</li>
-        <li>How you make love feel real</li>
-        <li>The way you make me believe in love more</li>
-        <li>How you make life better just by being in it</li>
-        <li>The way you make me feel lucky</li>
-        <li>How you make me feel enough</li>
-        <li>The way you make me feel seen</li>
-        <li>How you make me feel heard</li>
-        <li>The way you make me feel understood</li>
-        <li>How you make me feel safe</li>
-        <li>The way you make me feel calm</li>
-        <li>The way you make me feel at peace</li>
-        <li>How you make me feel supported</li>
-        <li>The way you make me feel cared for</li>
-        <li>How you make me feel appreciated</li>
-        <li>The way you make me feel chosen every day</li>
-        <li>How you make me feel special</li>
-        <li>The way you make me feel important</li>
-        <li>How you make love feel easy</li>
-        <li>The way you make commitment feel exciting</li>
-        <li>How you make the future feel bright</li>
-        <li>The way you make me want to be better</li>
-        <li>How you make me happier every day</li>
-        <li>The way you feel like my best friend</li>
-        <li>How you feel like my safe place</li>
-        <li>The way you’re my comfort</li>
-        <li>How you’re my happiness</li>
-        <li>The fact that you’re you — and that I get to love you ❤️</li>
-      </ol>
-    </section>
-
-    <footer>
-      Made with love ❤️
-    </footer>
-
   </div>
+
+  <!-- Main site content (hidden until start) -->
+  <div class="site-content" id="siteContent">
+    <div class="container">
+
+      <h1>150 Things I Love About You ❤️</h1>
+      <div class="subtitle">A love story, Hunter’s Version</div>
+      <div class="intro">
+        For the girl who asks me to name 10 things I love about her all the time… I figured I’d finally come prepared.
+      </div>
+
+      <!-- Poster Image -->
+      <img class="poster" src="poster.png" alt="150 Things I Love About You poster" />
+
+      <!-- Spotify Playlist -->
+      <section id="playlist">
+        <h2>🎶 Taylor’s Version</h2>
+        <p class="section-note">Press play while you read this 💘</p>
+        <div class="embed-wrap">
+          <iframe
+            style="border-radius:12px"
+            src="https://open.spotify.com/embed/album/6AORtDjduMM3bupSWzbTSG?utm_source=generator"
+            width="100%"
+            height="352"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy">
+          </iframe>
+        </div>
+      </section>
+
+      <!-- 1–20 -->
+      <section>
+        <h2>💖 You, Just Being You</h2>
+        <ol>
+          <li>The way you smile when you’re genuinely happy</li>
+          <li>How you laugh at my jokes (even the bad ones)</li>
+          <li>The way your presence instantly makes everything better</li>
+          <li>How safe and calm I feel with you</li>
+          <li>Your kind heart</li>
+          <li>Your warmth</li>
+          <li>Your honesty</li>
+          <li>The way you’re unapologetically yourself</li>
+          <li>Your sincerity</li>
+          <li>Your authenticity</li>
+          <li>The way you care so deeply</li>
+          <li>Your empathy</li>
+          <li>The way you understand people</li>
+          <li>Your emotional intelligence</li>
+          <li>The way you’re gentle but strong</li>
+          <li>How genuine you are</li>
+          <li>The way you make others feel comfortable</li>
+          <li>Your patience</li>
+          <li>Your loyalty</li>
+          <li>The way you love wholeheartedly</li>
+        </ol>
+      </section>
+
+      <!-- 21–35 -->
+      <section>
+        <h2>🎶 Taylor’s Version (More Reasons)</h2>
+        <ol start="21">
+          <li>Your love for Taylor Swift</li>
+          <li>The way you light up when her songs come on</li>
+          <li>How you somehow know every lyric</li>
+          <li>The way you sing like you’re on tour</li>
+          <li>How Taylor songs make me think of you</li>
+          <li>Your music taste rubbing off on me</li>
+          <li>The emotional range you bring to playlists</li>
+          <li>The way music connects to your soul</li>
+          <li>Your excitement when a favourite song starts</li>
+          <li>How passionate you are about the things you love</li>
+          <li>The way you feel music, not just hear it</li>
+          <li>How certain songs instantly match your mood</li>
+          <li>The way you make car rides better with music</li>
+          <li>How music helps you express yourself</li>
+          <li>The way Taylor Swift is basically a love language for you</li>
+        </ol>
+      </section>
+
+      <!-- 36–55 -->
+      <section>
+        <h2>🍝 The Way You Look After Me</h2>
+        <ol start="36">
+          <li>The amazing food you make</li>
+          <li>The love you put into cooking</li>
+          <li>How everything you make tastes better than expected</li>
+          <li>The way your food feels comforting</li>
+          <li>How you remember what I like</li>
+          <li>The effort you put into meals</li>
+          <li>The way you turn dinner into quality time</li>
+          <li>How you feed me like you care about my soul</li>
+          <li>The pride you take in your cooking</li>
+          <li>The way food feels like love when it comes from you</li>
+          <li>How you always want to make sure I’ve eaten</li>
+          <li>The way you cook even when you’re tired</li>
+          <li>How you make simple meals special</li>
+          <li>The way you enjoy cooking for people you love</li>
+          <li>How your food feels like home</li>
+          <li>The comfort your cooking brings</li>
+          <li>The care behind everything you make</li>
+          <li>The way you spoil me with food</li>
+          <li>How thoughtful you are with meals</li>
+          <li>The way cooking is another way you show love</li>
+        </ol>
+      </section>
+
+      <!-- 56–75 -->
+      <section>
+        <h2>🧹 Our Home & Everyday Love</h2>
+        <ol start="56">
+          <li>The way you ask me to name 10 things I love about you</li>
+          <li>How you never get tired of hearing it</li>
+          <li>The way you make loving you intentional</li>
+          <li>All the chores you do around the house</li>
+          <li>The way you notice what needs doing</li>
+          <li>The effort you put into our shared space</li>
+          <li>The way you make a house feel like home</li>
+          <li>How you support me through actions, not just words</li>
+          <li>The way you do things because you care</li>
+          <li>How you make life easier without asking for credit</li>
+          <li>The way you take responsibility</li>
+          <li>How reliable you are</li>
+          <li>The way you show up every day</li>
+          <li>The consistency you bring to our lives</li>
+          <li>The way you keep things running smoothly</li>
+          <li>How you think about “us” in daily decisions</li>
+          <li>The effort you put into the little things</li>
+          <li>The way you carry so much without complaining</li>
+          <li>How thoughtful you are with everyday tasks</li>
+          <li>The love you show through effort</li>
+        </ol>
+      </section>
+
+      <!-- 76–105 -->
+      <section>
+        <h2>💘 Us</h2>
+        <ol start="76">
+          <li>The way you hug me</li>
+          <li>How your hugs feel like home</li>
+          <li>The way you believe in me</li>
+          <li>How you support my goals</li>
+          <li>The way you celebrate my wins</li>
+          <li>How you comfort me when things aren’t great</li>
+          <li>The way you understand me</li>
+          <li>How you accept me as I am</li>
+          <li>The way you listen to me</li>
+          <li>How you really hear me</li>
+          <li>The way you reassure me</li>
+          <li>How safe I feel being vulnerable with you</li>
+          <li>The way you make distance feel smaller</li>
+          <li>How you make time apart bearable</li>
+          <li>The way you make reunions special</li>
+          <li>How excited I get to see you</li>
+          <li>The way you make waiting worth it</li>
+          <li>How you choose me every day</li>
+          <li>Your commitment to us</li>
+          <li>The way you prioritise our relationship</li>
+          <li>How secure you make me feel</li>
+          <li>The way you calm my overthinking</li>
+          <li>How you ground me</li>
+          <li>The way you make me feel valued</li>
+          <li>How you make me feel wanted</li>
+          <li>The way you make me feel loved</li>
+          <li>How natural loving you feels</li>
+          <li>The way you make “us” feel solid</li>
+          <li>How you make love feel safe</li>
+          <li>The way you make the future exciting</li>
+        </ol>
+      </section>
+
+      <!-- 106–150 -->
+      <section>
+        <h2>🏡 My Favourite Person</h2>
+        <ol start="106">
+          <li>The way you make ordinary days special</li>
+          <li>How you turn moments into memories</li>
+          <li>The comfort you bring</li>
+          <li>The peace you give me</li>
+          <li>The way you calm my overthinking</li>
+          <li>The way you make me feel secure</li>
+          <li>How you make me feel loved without trying</li>
+          <li>The way you make me feel chosen</li>
+          <li>The way you feel like my person</li>
+          <li>The way you feel like home</li>
+          <li>How you make me smile without realising</li>
+          <li>The way you make my heart feel full</li>
+          <li>How you make me proud</li>
+          <li>The way you inspire me</li>
+          <li>How you make me grateful</li>
+          <li>The way you make everything brighter</li>
+          <li>How you’ve changed my life</li>
+          <li>The way you’ve changed me for the better</li>
+          <li>How you make love feel real</li>
+          <li>The way you make me believe in love more</li>
+          <li>How you make life better just by being in it</li>
+          <li>The way you make me feel lucky</li>
+          <li>How you make me feel enough</li>
+          <li>The way you make me feel seen</li>
+          <li>How you make me feel heard</li>
+          <li>The way you make me feel understood</li>
+          <li>How you make me feel safe</li>
+          <li>The way you make me feel calm</li>
+          <li>The way you make me feel at peace</li>
+          <li>How you make me feel supported</li>
+          <li>The way you make me feel cared for</li>
+          <li>How you make me feel appreciated</li>
+          <li>The way you make me feel chosen every day</li>
+          <li>How you make me feel special</li>
+          <li>The way you make me feel important</li>
+          <li>How you make love feel easy</li>
+          <li>The way you make commitment feel exciting</li>
+          <li>How you make the future feel bright</li>
+          <li>The way you make me want to be better</li>
+          <li>How you make me happier every day</li>
+          <li>The way you feel like my best friend</li>
+          <li>How you feel like my safe place</li>
+          <li>The way you’re my comfort</li>
+          <li>How you’re my happiness</li>
+          <li>The fact that you’re you — and that I get to love you ❤️</li>
+        </ol>
+      </section>
+
+      <footer>
+        Made with love ❤️
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    const overlay = document.getElementById("overlay");
+    const startBtn = document.getElementById("startBtn");
+    const siteContent = document.getElementById("siteContent");
+    const playlist = document.getElementById("playlist");
+
+    startBtn.addEventListener("click", () => {
+      // Show site content
+      siteContent.classList.add("visible");
+
+      // Fade out overlay
+      overlay.classList.add("hidden");
+
+      // Smooth scroll to playlist after a tiny delay so layout is ready
+      setTimeout(() => {
+        playlist.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+    });
+  </script>
+
 </body>
 </html>
