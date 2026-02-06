@@ -436,21 +436,30 @@
 
   const playBtn = document.getElementById("playBtn");
   const overlayPlaylistEmbed = document.getElementById("overlayPlaylistEmbed");
+  const overlayHint = document.getElementById("overlayHint");
 
-  playBtn.addEventListener("click", () => {
-    // Hide play button
+  let musicRevealed = false;
+
+  // Step 1: Show Spotify, but DO NOT leave overlay yet
+  playBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent accidental close
+
     playBtn.style.display = "none";
-
-    // Show Spotify
     overlayPlaylistEmbed.classList.add("show");
+    overlayHint.style.opacity = "1";
 
-    // After a short moment, reveal the site
-    setTimeout(() => {
-      siteContent.classList.add("visible");
-      overlay.classList.add("hidden");
-    }, 900); // gives her a moment to see Spotify before transition
+    musicRevealed = true;
+  });
+
+  // Step 2: Any click AFTER music reveal starts the site
+  overlay.addEventListener("click", () => {
+    if (!musicRevealed) return;
+
+    siteContent.classList.add("visible");
+    overlay.classList.add("hidden");
   });
 </script>
+
 
 </body>
 </html>
